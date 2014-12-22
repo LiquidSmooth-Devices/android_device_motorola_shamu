@@ -227,26 +227,26 @@
     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
 
     <!-- Vibrator pattern for feedback about a long screen/key press -->
-    <integer-array name="config_longPressVibePattern">
+    <!--integer-array name="config_longPressVibePattern">
         <item>0</item>
         <item>25</item>
         <item>10</item>
-    </integer-array>
+    </integer-array-->
 
     <!-- Make things go fast -->
     <bool name="config_ui_enableFadingMarquee">false</bool>
 
     <!-- Vibrator pattern for feedback about touching a virtual key -->
-    <integer-array name="config_virtualKeyVibePattern">
+    <!--integer-array name="config_virtualKeyVibePattern">
         <item>0</item>
         <item>25</item>
         <item>8</item>
-    </integer-array>
+    </integer-array-->
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
-    <integer-array name="config_keyboardTapVibePattern">
+    <!--integer-array name="config_keyboardTapVibePattern">
         <item>25</item>
-    </integer-array>
+    </integer-array-->
 
     <!-- Wifi driver supports batched scan -->
     <bool translatable="false" name="config_wifi_batched_scan_supported">true</bool>
@@ -270,7 +270,7 @@
     <!-- Is the device capable of hot swapping an UICC Card -->
     <bool name="config_hotswapCapable">true</bool>
 
-    <!-- Flag specifying whether VoLTE & VT is availasble on device -->
+    <!-- Flag specifying whether VoLTE & VT is available on device -->
     <bool name="config_device_volte_vt_available">false</bool>
 
     <!-- Configure mobile tcp buffer sizes in the form:
