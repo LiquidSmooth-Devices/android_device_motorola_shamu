@@ -159,7 +159,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=false \
-    ro.audio.monitorRotation=true
+    ro.audio.monitorRotation=true \
+    lpa.decode=false \
+    lpa.releaselock=false \
+    lpa.use-stagefright=false \
+    tunnel.decode=false
 
 # Audio effects
 PRODUCT_PACKAGES += \
