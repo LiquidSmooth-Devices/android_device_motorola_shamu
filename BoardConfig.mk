@@ -180,6 +180,9 @@ BOARD_HAL_STATIC_LIBRARIES := libdumpstate.shamu
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
 
+# Enable ion compatibility
+TARGET_USE_ION_COMPAT := true
+
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
 
