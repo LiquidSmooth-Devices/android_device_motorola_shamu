@@ -19,6 +19,7 @@
 #
 # Everything in this directory will become public
 
+
 PRODUCT_COPY_FILES += \
     device/moto/shamu/init.shamu.rc:root/init.shamu.rc \
     device/moto/shamu/init.shamu.power.rc:root/init.shamu.power.rc \
@@ -34,7 +35,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     device/moto/shamu/audio_policy.conf:system/etc/audio_policy.conf \
-    device/moto/shamu/audio_effects.conf:system/etc/audio_effects.conf
+    device/moto/shamu/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
 PRODUCT_COPY_FILES += \
     device/moto/shamu/media_profiles.xml:system/etc/media_profiles.xml \
@@ -148,28 +149,24 @@ PRODUCT_PACKAGES += \
     libaudio-resampler
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.audio.monitorRotation=true \
-    fmas.spkr_6ch=35,20,110 \
-    fmas.spkr_2ch=35,25 \
-    fmas.spkr_angles=10 \
-    fmas.spkr_sgain=0 \
     media.aac_51_output_enabled=true \
     persist.audio.dualmic.config=endfire \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=false \
-    drm.service.enabled=true \
-    lpa.decode=false \
-    lpa.releaselock=false \
-    lpa.use-stagefright=false \
-    tunnel.decode=false
+    ro.audio.monitorRotation=true
 
 # Audio effects
 PRODUCT_PACKAGES += \
     libqcomvisualizer \
-    libqcompostprocbundle \
     libqcomvoiceprocessing \
     libqcomvoiceprocessingdescriptors
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    fmas.spkr_6ch=35,20,110 \
+    fmas.spkr_2ch=35,25 \
+    fmas.spkr_angles=10 \
+    fmas.spkr_sgain=0 \
 
 PRODUCT_PACKAGES += \
     libqomx_core \
@@ -194,6 +191,8 @@ PRODUCT_PACKAGES += \
     charger_res_images
 
 # for launcher layout
+PRODUCT_PACKAGES += \
+    ShamuLayout
 
 PRODUCT_PACKAGES += \
     bdAddrLoader
@@ -308,7 +307,7 @@ PRODUCT_COPY_FILES += \
 endif
 
 # Enable for volte call
-AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
+AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := false
 
 PRODUCT_PROPERTY_OVERRIDES += \
    ro.hwui.texture_cache_size=72 \

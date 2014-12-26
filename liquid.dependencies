@@ -1,9 +1,9 @@
 [
   {
-    "remote": "ls",
+    "remote": "tm",
     "repository": "proprietary_vendor_motorola",
-    "target_path": "vendor/moto",
-    "revision": "lollipop"
+    "target_path": "vendor/motorola",
+    "revision": "cm-12.0"
   },
   {
     "remote": "lsd",
