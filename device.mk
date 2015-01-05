@@ -90,8 +90,6 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4356
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/bcmdhd.cal:system/etc/wifi/bcmdhd.cal
 
-PRODUCT_TAGS += dalvik.gc.type-precise
-
 # This device is 560dpi.  However the platform doesn't
 # currently contain all of the bitmaps at 560dpi density so
 # we do this little trick to fall back to the xxhdpi version
