@@ -25,7 +25,8 @@ PRODUCT_COPY_FILES += \
     device/motorola/shamu/init.shamu.power.rc:root/init.shamu.power.rc \
     device/motorola/shamu/init.shamu.usb.rc:root/init.shamu.usb.rc \
     device/motorola/shamu/fstab.shamu:root/fstab.shamu \
-    device/motorola/shamu/ueventd.shamu.rc:root/ueventd.shamu.rc
+    device/motorola/shamu/ueventd.shamu.rc:root/ueventd.shamu.rc \
+    device/motorola/shamu/init.performance_profiles.rc:root/init.performance_profiles.rc
 
 # Input device files for shamu
 PRODUCT_COPY_FILES += \
