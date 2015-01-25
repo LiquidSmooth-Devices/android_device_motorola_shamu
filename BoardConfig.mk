@@ -23,7 +23,7 @@ TARGET_CPU_VARIANT := krait
 TARGET_NO_BOOTLOADER := true
 
 # Inline kernel building
-TARGET_KERNEL_CONFIG := franco_defconfig
+TARGET_KERNEL_CONFIG := liquid_defconfig
 TARGET_KERNEL_SOURCE := kernel/moto/shamu
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 
@@ -113,6 +113,16 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 
 TARGET_RECOVERY_FSTAB = device/motorola/shamu/fstab.shamu
 TARGET_RELEASETOOLS_EXTENSIONS := device/motorola/shamu
+
+# TWRP
+TARGET_RECOVERY_DEVICE_DIRS := device/motorola/shamu
+DEVICE_RESOLUTION := 1440x2560
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_L_CRYPTO := true
+BOARD_HAS_NO_REAL_SDCARD := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
+TW_SCREEN_BLANK_ON_BOOT := true
 
 # Support Native Layer RF cutback
 BOARD_USES_CUTBACK_IN_RILD := true
