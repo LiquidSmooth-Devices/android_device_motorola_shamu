@@ -361,3 +361,7 @@ PRODUCT_OEM_PROPERTIES := \
     ro.config.wallpaper_component \
     ro.oem.* \
     oem.*
+
+# Frandom init.d
+PRODUCT_COPY_FILES += \
+    device/motorola/shamu/00_frandom:system/etc/init.d/00_frandom
