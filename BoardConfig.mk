@@ -115,7 +115,7 @@ TARGET_RECOVERY_FSTAB = device/motorola/shamu/fstab.shamu
 TARGET_RELEASETOOLS_EXTENSIONS := device/motorola/shamu
 
 # TWRP
-TARGET_RECOVERY_DEVICE_DIRS := device/moto/shamu
+TARGET_RECOVERY_DEVICE_DIRS := device/motorola/shamu
 DEVICE_RESOLUTION := 1440x2560
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_L_CRYPTO := true
