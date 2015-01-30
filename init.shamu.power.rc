@@ -98,6 +98,6 @@ on property:dev.bootcomplete=1
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor conservative
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
     write /sys/devices/system/cpu/cpufreq/conservative/up_threshold 98
-#    write /sys/class/misc/mako_hotplug_control/load_threshold 98
-#    write /sys/class/misc/mako_hotplug_control/high_load_counter 20
+    write /sys/class/misc/mako_hotplug_control/load_threshold 98
+    write /sys/class/misc/mako_hotplug_control/high_load_counter 20
     write /sys/devices/system/cpu/sched_balance_policy/current_sched_balance_policy powersaving
