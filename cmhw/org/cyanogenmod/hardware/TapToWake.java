@@ -28,11 +28,10 @@ public class TapToWake {
     }
 
     public static boolean isEnabled()  {
-        return mEnabled;
+        return "AUTO".equals(FileUtils.readOneLine(CONTROL_PATH));
     }
 
     public static boolean setEnabled(boolean state)  {
-        mEnabled = state;
         return FileUtils.writeLine(CONTROL_PATH, (state ? "AUTO" : "OFF"));
     }
 }
