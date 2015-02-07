@@ -147,6 +147,7 @@ BOARD_SEPOLICY_UNION += \
         kernel.te \
         mdm_helper.te \
         mediaserver.te \
+        mmi_touch_sh.te \
         mpdecision.te \
         netd.te \
         netmgrd.te \
