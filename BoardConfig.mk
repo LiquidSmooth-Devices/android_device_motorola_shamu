@@ -28,7 +28,7 @@ TARGET_KERNEL_SOURCE := kernel/moto/shamu
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 
 # Custom Toolchain Flags
-TARGET_GCC_VERSION_ARM := 4.8-sm
+TARGET_GCC_VERSION_ARM := 4.9-sm
 
 # Liquid Optimizations
 # LIQUIFY := true
