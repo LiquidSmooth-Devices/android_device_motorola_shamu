@@ -123,6 +123,25 @@ BOARD_HAS_NO_REAL_SDCARD := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
 TW_SCREEN_BLANK_ON_BOOT := true
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+
+# MultiROM config. MultiROM also uses parts of TWRP config
+MR_INPUT_TYPE := type_b
+MR_INIT_DEVICES := device/motorola/shamu/multirom/mr_init_devices.c
+MR_DPI := xxhdpi
+MR_DPI_FONT := 435
+MR_FSTAB := device/motorola/shamu/twrp.fstab
+MR_KEXEC_MEM_MIN := 0x20000000
+MR_KEXEC_DTB := true
+#MR_INFOS := device/motorola/shamu/multirom/infos
+MR_DEVICE_HOOKS := device/motorola/shamu/multirom/mr_hooks.c
+MR_DEVICE_HOOKS_VER := 5
+MR_PIXEL_FORMAT := "RGBX_8888"
+MR_ENCRYPTION := true
+MR_ENCRYPTION_SETUP_SCRIPT := device/motorola/shamu/multirom/mr_cp_crypto.sh
+MR_USE_QCOM_OVERLAY := true
+MR_QCOM_OVERLAY_HEADER := device/motorola/shamu/multirom/mr_qcom_overlay.h
+MR_QCOM_OVERLAY_CUSTOM_PIXEL_FORMAT := MDP_RGBX_8888
 
 # Support Native Layer RF cutback
 BOARD_USES_CUTBACK_IN_RILD := true

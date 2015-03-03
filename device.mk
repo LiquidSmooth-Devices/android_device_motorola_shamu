@@ -19,6 +19,14 @@
 #
 # Everything in this directory will become public
 
+PRODUCT_COPY_FILES += \
+    device/motorola/shamu/recovery/root/etc/twrp.fstab:recovery/root/etc/twrp.fstab \
+    device/motorola/shamu/recovery/root/vendor/firmware/keymaster/keymaster.b00:recovery/root/vendor/firmware/keymaster/keymaster.b00 \
+    device/motorola/shamu/recovery/root/vendor/firmware/keymaster/keymaster.b01:recovery/root/vendor/firmware/keymaster/keymaster.b01 \
+    device/motorola/shamu/recovery/root/vendor/firmware/keymaster/keymaster.b02:recovery/root/vendor/firmware/keymaster/keymaster.b02 \
+    device/motorola/shamu/recovery/root/vendor/firmware/keymaster/keymaster.b03:recovery/root/vendor/firmware/keymaster/keymaster.b03 \
+    device/motorola/shamu/recovery/root/vendor/firmware/keymaster/keymaster.mdt:recovery/root/vendor/firmware/keymaster/keymaster.mdt \
+    device/motorola/shamu/recovery/root/vendor/lib/libQSEEComAPI.so:recovery/root/sbin/libQSEEComAPI.so
 
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/init.shamu.rc:root/init.shamu.rc \
