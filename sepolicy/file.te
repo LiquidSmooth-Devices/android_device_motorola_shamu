@@ -30,7 +30,7 @@ type persist_sensors_file, file_type;
 type persist_modem_file, file_type;
 type persist_hiddenmenu_file, file_type;
 
-#Define the files written during the operation of mpdecision    56
+#Define the files written during the operation of mpdecision
 type sysfs_mpdecision, fs_type, sysfs_type;
 type sysfs_rqstats, fs_type, sysfs_type;
 type sysfs_cpu_online, fs_type, sysfs_type;
@@ -41,3 +41,4 @@ type sysfs_sar_wifi, fs_type, sysfs_type;
 type tap2wake_dev, fs_type, sysfs_type;
 type sysfs_vibrator, fs_type, sysfs_type;
 type sysfs_display, fs_type, sysfs_type;
+type display_sysfs, sysfs_type, file_type;
