@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 The CyanogenMod Project
+ * Copyright (C) 2015 AICP
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,18 +19,18 @@ package org.cyanogenmod.hardware;
 import org.cyanogenmod.hardware.util.FileUtils;
 import java.io.File;
 
-public class VibratorHW {
-    private static String LEVEL_PATH = "/sys/vibrator/pwmvalue";
+public class VibratorWG {
+    private static String VIB_PATH = "/sys/android_touch/vib_strength";
 
     public static boolean isSupported() {
-        return new File(LEVEL_PATH).exists();
+        return new File(VIB_PATH).exists();
     }
 
-    public static int getMaxIntensity()  {
-        return 127;
+    public static int getMaxIntensity() {
+        return 100;
     }
 
-    public static int getMinIntensity()  {
+    public static int getMinIntensity() {
         return 0;
     }
 
@@ -38,15 +38,15 @@ public class VibratorHW {
         return 85;
     }
 
-    public static int getCurIntensity()  {
-        return Integer.parseInt(FileUtils.readOneLine(LEVEL_PATH));
+    public static int getCurIntensity() {
+        return Integer.parseInt(FileUtils.readOneLine(VIB_PATH));
     }
 
-    public static int getDefaultIntensity()  {
-        return getMaxIntensity();
+    public static int getDefaultIntensity() {
+        return 20;
     }
 
-    public static boolean setIntensity(int intensity)  {
-        return FileUtils.writeLine(LEVEL_PATH, String.valueOf(intensity));
+    public static boolean setIntensity(int intensity) {
+        return FileUtils.writeLine(VIB_PATH, String.valueOf(intensity));
     }
 }
