@@ -28,7 +28,8 @@ TARGET_KERNEL_SOURCE := kernel/moto/shamu
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 
 # Custom Toolchain Flags
-TARGET_GCC_VERSION_ARM := 4.9-sm
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-5.0/bin
+KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
 
 # Liquid Optimizations
 # LIQUIFY := true
