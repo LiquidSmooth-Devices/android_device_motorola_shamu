@@ -27,6 +27,82 @@ PRODUCT_COPY_FILES += \
     device/motorola/shamu/fstab.shamu:root/fstab.shamu \
     device/motorola/shamu/ueventd.shamu.rc:root/ueventd.shamu.rc
 
+# UKM
+PRODUCT_COPY_FILES += \
+    device/motorola/shamu/ukm/UKM:system/etc/init.d/UKM \
+    device/motorola/shamu/ukm/uci:system/xbin/uci \
+    device/motorola/shamu/ukm/config.json.generate.sound:system/UKM/config.json.generate.sound \
+    device/motorola/shamu/ukm/config.json.generate.cpuvolt:system/UKM/config.json.generate.cpuvolt \
+    device/motorola/shamu/ukm/config.json.generate.tools:system/UKM/config.json.generate.tools \
+    device/motorola/shamu/ukm/config.json.generate.gamma:system/UKM/config.json.generate.gamma \
+    device/motorola/shamu/ukm/config.json.generate.mem:system/UKM/config.json.generate.mem \
+    device/motorola/shamu/ukm/config.json.generate.profile:system/UKM/config.json.generate.profile \
+    device/motorola/shamu/ukm/config.json.generate.speaker:system/UKM/config.json.generate.speaker \
+    device/motorola/shamu/ukm/config.json.generate.bprop:system/UKM/config.json.generate.bprop \
+    device/motorola/shamu/ukm/config.json.generate.cpu:system/UKM/config.json.generate.cpu \
+    device/motorola/shamu/ukm/config.json.generate.io:system/UKM/config.json.generate.io \
+    device/motorola/shamu/ukm/config.json.generate.gpu:system/UKM/config.json.generate.gpu \
+    device/motorola/shamu/ukm/files/bck_prof:system/UKM/files/bck_prof \
+    device/motorola/shamu/ukm/files/gamma_prof:system/UKM/files/gamma_prof \
+    device/motorola/shamu/ukm/files/volt_prof:system/UKM/files/volt_prof \
+    device/motorola/shamu/ukm/files/gammafranco_prof:system/UKM/files/gammafranco_prof \
+    device/motorola/shamu/ukm/files/dropcaches_prof:system/UKM/files/dropcaches_prof \
+    device/motorola/shamu/ukm/files/lmk_prof:system/UKM/files/lmk_prof \
+    device/motorola/shamu/ukm/files/gammafrancoN5_prof:system/UKM/files/gammafrancoN5_prof \
+    device/motorola/shamu/ukm/files/gammafaux_prof:system/UKM/files/gammafaux_prof \
+    device/motorola/shamu/ukm/files/wake_prof:system/UKM/files/wake_prof \
+    device/motorola/shamu/ukm/files/speaker_prof:system/UKM/files/speaker_prof \
+    device/motorola/shamu/ukm/files/sound_prof:system/UKM/files/sound_prof \
+    device/motorola/shamu/ukm/config.json.generate.wake:system/UKM/config.json.generate.wake \
+    device/motorola/shamu/ukm/config.json.generate.thermal:system/UKM/config.json.generate.thermal \
+    device/motorola/shamu/ukm/config.json.generate.hotplug:system/UKM/config.json.generate.hotplug \
+    device/motorola/shamu/ukm/sqlite3:system/UKM/sqlite3 \
+    device/motorola/shamu/ukm/busybox:system/UKM/busybox \
+    device/motorola/shamu/ukm/config.json.generate.misc:system/UKM/config.json.generate.misc \
+    device/motorola/shamu/ukm/config.json.generate.error:system/UKM/config.json.generate.error \
+    device/motorola/shamu/ukm/actions/soundfaux:system/UKM/actions/soundfaux \
+    device/motorola/shamu/ukm/actions/devtools:system/UKM/actions/devtools \
+    device/motorola/shamu/ukm/actions/voltage:system/UKM/actions/voltage \
+    device/motorola/shamu/ukm/actions/intellithermal:system/UKM/actions/intellithermal \
+    device/motorola/shamu/ukm/actions/restorebackup:system/UKM/actions/restorebackup \
+    device/motorola/shamu/ukm/actions/socset:system/UKM/actions/socset \
+    device/motorola/shamu/ukm/actions/gpuset:system/UKM/actions/gpuset \
+    device/motorola/shamu/ukm/actions/mpdboostfreq:system/UKM/actions/mpdboostfreq \
+    device/motorola/shamu/ukm/actions/boolean:system/UKM/actions/boolean \
+    device/motorola/shamu/ukm/actions/buildprop:system/UKM/actions/buildprop \
+    device/motorola/shamu/ukm/actions/bracket-option:system/UKM/actions/bracket-option \
+    device/motorola/shamu/ukm/actions/touch:system/UKM/actions/touch \
+    device/motorola/shamu/ukm/actions/wake:system/UKM/actions/wake \
+    device/motorola/shamu/ukm/actions/serviceset:system/UKM/actions/serviceset \
+    device/motorola/shamu/ukm/actions/speakerfaux:system/UKM/actions/speakerfaux \
+    device/motorola/shamu/ukm/actions/ioset:system/UKM/actions/ioset \
+    device/motorola/shamu/ukm/actions/sqlite:system/UKM/actions/sqlite \
+    device/motorola/shamu/ukm/actions/dropcaches:system/UKM/actions/dropcaches \
+    device/motorola/shamu/ukm/actions/lmk:system/UKM/actions/lmk \
+    device/motorola/shamu/ukm/actions/generic:system/UKM/actions/generic \
+    device/motorola/shamu/ukm/actions/live:system/UKM/actions/live \
+    device/motorola/shamu/ukm/actions/cpuvolt:system/UKM/actions/cpuvolt \
+    device/motorola/shamu/ukm/actions/numeric:system/UKM/actions/numeric \
+    device/motorola/shamu/ukm/actions/gamma:system/UKM/actions/gamma \
+    device/motorola/shamu/ukm/actions/cpuset:system/UKM/actions/cpuset \
+    device/motorola/shamu/ukm/actions/printk:system/UKM/actions/printk \
+    device/motorola/shamu/ukm/actions/zram:system/UKM/actions/zram \
+    device/motorola/shamu/ukm/actions/powersuspend:system/UKM/actions/powersuspend \
+    device/motorola/shamu/ukm/actions/cpuboostibf:system/UKM/actions/cpuboostibf \
+    device/motorola/shamu/ukm/config.json.generate:system/UKM/config.json.generate \
+    device/motorola/shamu/ukm/config.json.generate.status:system/UKM/config.json.generate.status \
+    device/motorola/shamu/ukm/debug/speed_bin:system/UKM/debug/speed_bin \
+    device/motorola/shamu/ukm/debug/pvs_bin:system/UKM/debug/pvs_bin \
+    device/motorola/shamu/ukm/debug/last_kmsg:system/UKM/debug/last_kmsg \
+    device/motorola/shamu/ukm/config.json.generate.adv:system/UKM/config.json.generate.adv \
+    device/motorola/shamu/ukm/device/bacon.sh:system/UKM/device/bacon.sh \
+    device/motorola/shamu/ukm/device/deb.sh:system/UKM/device/deb.sh \
+    device/motorola/shamu/ukm/device/hammerhead.sh:system/UKM/device/hammerhead.sh \
+    device/motorola/shamu/ukm/device/maguro.sh:system/UKM/device/maguro.sh \
+    device/motorola/shamu/ukm/device/mako.sh:system/UKM/device/mako.sh \
+    device/motorola/shamu/ukm/device/.device.sh:system/UKM/device/.device.sh \
+    device/motorola/shamu/ukm/config.json.generate.info:system/UKM/config.json.generate.info
+
 # Input device files for shamu
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
