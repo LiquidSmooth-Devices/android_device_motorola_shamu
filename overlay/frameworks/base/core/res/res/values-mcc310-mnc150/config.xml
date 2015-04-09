@@ -26,4 +26,8 @@
     <string translatable="false" name="config_mobile_hotspot_provision_app_no_ui">com.motorola.entitlement.SILENT_ENTITLEMENT_CHECK</string>
     <string translatable="false" name="config_mobile_hotspot_provision_response">com.motorola.entitlement.SILENT_ENTITLEMENT_CHECK_RESULT</string>
 
+    <!--Overlay useragent to resolve MMS issues -->
+    <string name="config_mms_user_agent">Nexus6</string>
+    <string name="config_mms_user_agent_profile_url" translatable="false">http://uaprof.vtext.com/mot/nexus6/nexus6.xml</string>
+
 </resources>
