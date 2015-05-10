@@ -12,6 +12,9 @@ on charger
     write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/idle_enabled 1
     write /sys/module/msm_pm/modes/cpu0/retention/idle_enabled 1
 
+on early-init
+    write /sys/module/blu_plug/min_online 4
+
 on boot
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
@@ -22,6 +25,7 @@ on boot
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
     chmod 0664 /dev/cpuctl/apps/cpu.notify_on_migrate
     write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/module/blu_plug/min_online 4
 
 on property:dev.bootcomplete=1
     write /sys/module/lpm_levels/enable_low_power/l2 4
@@ -54,3 +58,4 @@ on property:dev.bootcomplete=1
     write /sys/devices/system/cpu/cpufreq/conservative/input_boost_freq 1728000
     write /sys/devices/system/cpu/sched_balance_policy/current_sched_balance_policy performance
     write /dev/cpuctl/apps/cpu.notify_on_migrate 0
+    write /sys/module/blu_plug/min_online 1
