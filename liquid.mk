@@ -5,6 +5,9 @@ TARGET_SCREEN_WIDTH := 1440
 # Inherit some common Liquid stuff.
 $(call inherit-product, vendor/liquid/config/common_phone.mk)
 
+# ViperFX
+$(call inherit-product-if-exists, packages/apps/Viper4Android/viperfx.mk)
+
 # Enhanced NFC
 $(call inherit-product, vendor/liquid/config/nfc_enhanced.mk)
 
