@@ -22,6 +22,7 @@ on boot
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
     chmod 0664 /dev/cpuctl/apps/cpu.notify_on_migrate
     write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/module/msm_hotplug/min_cpus_online 4
 
 on property:dev.bootcomplete=1
     write /sys/module/lpm_levels/enable_low_power/l2 4
@@ -54,3 +55,8 @@ on property:dev.bootcomplete=1
     write /sys/devices/system/cpu/cpufreq/conservative/input_boost_freq 1728000
     write /sys/devices/system/cpu/sched_balance_policy/current_sched_balance_policy performance
     write /dev/cpuctl/apps/cpu.notify_on_migrate 0
+    write /sys/module/msm_hotplug/min_cpus_online 1
+    write /sys/module/msm_hotplug/down_lock_duration 500
+    write /sys/module/msm_hotplug/boost_lock_duration 2500
+    write /sys/module/msm_hotplug/update_rates "200 5:100 50:50 350:200"
+    write /sys/module/msm_hotplug/fast_lane_load 100
