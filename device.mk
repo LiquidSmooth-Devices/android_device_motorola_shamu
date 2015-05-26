@@ -30,7 +30,7 @@ PRODUCT_COPY_FILES += \
 # UKM
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/ukm/UKM:system/etc/init.d/UKM \
-    device/motorola/shamu/device/.device.sh:data/UKM/device/.device.sh \
+    device/motorola/shamu/ukm/device/.device.sh:data/UKM/device/.device.sh \
     device/motorola/shamu/ukm/uci:system/xbin/uci \
     device/motorola/shamu/ukm/config.json.generate.sound:data/UKM/config.json.generate.sound \
     device/motorola/shamu/ukm/config.json.generate.cpuvolt:data/UKM/config.json.generate.cpuvolt \
