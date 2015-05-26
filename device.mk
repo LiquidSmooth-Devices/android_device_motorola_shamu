@@ -100,7 +100,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/shamu/ukm/device/hammerhead.sh:system/UKM/device/hammerhead.sh \
     device/motorola/shamu/ukm/device/maguro.sh:system/UKM/device/maguro.sh \
     device/motorola/shamu/ukm/device/mako.sh:system/UKM/device/mako.sh \
-    device/motorola/shamu/ukm/device/.device.sh:system/UKM/device/.device.sh \
+    device/motorola/shamu/ukm/UKM.sh:system/addon.d/UKM.sh
     device/motorola/shamu/ukm/config.json.generate.info:system/UKM/config.json.generate.info
 
 # Input device files for shamu
