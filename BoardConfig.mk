@@ -32,7 +32,10 @@ KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-ea
 KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
 
 # Liquid Optimizations
-# LIQUIFY := true
+USE_O3 := true
+STRICT := true
+GRAPHITE := true
+LTO := true
 LIQUID_CHANGELOG := true
 
 BOARD_KERNEL_BASE := 0x00000000
