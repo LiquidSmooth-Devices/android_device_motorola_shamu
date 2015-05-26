@@ -101,6 +101,14 @@ on post-fs-data
     # rild files
     mkdir /data/misc/audio_cutback 0770 radio audio
 
+    # Hardware tunables
+    chown root system /sys/bus/i2c/devices/1-004a/tsp
+    chmod 0664 /sys/bus/i2c/devices/1-004a/tsp
+    restorecon /sys/bus/i2c/devices/1-004a/tsp
+    chown root system /sys/drv2605/rtp_strength
+    chmod 0664 /sys/drv2605/rtp_strength
+    restorecon /sys/drv2605/rtp_strength
+
     # Wake Gestures
     chown system system /sys/android_touch/doubletap2wake
     chmod 0644 /sys/android_touch/doubletap2wake
@@ -627,14 +635,6 @@ service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh atmel
     class main
     user root
     oneshot
-
-# bugreport is triggered by holding down volume down, volume up and power
-service bugreport /system/bin/dumpstate -d -p -B \
-        -o /data/data/com.android.shell/files/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-    keycodes 114 115 116
 
 service mdm_helper_proxy /system/bin/mdm_helper_proxy
     class core
