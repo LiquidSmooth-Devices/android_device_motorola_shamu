@@ -36,6 +36,7 @@ USE_O3 := true
 STRICT := true
 GRAPHITE := true
 LTO := true
+TARGET_ENABLE_UKM := true
 LIQUID_CHANGELOG := true
 
 BOARD_KERNEL_BASE := 0x00000000
