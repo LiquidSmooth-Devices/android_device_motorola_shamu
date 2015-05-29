@@ -44,6 +44,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/mixer_paths.xml:system/etc/mixer_paths.xml
 
+# Kernel init.d script
+PRODUCT_COPY_FILES += \
+    device/motorola/shamu/00_frandom:system/etc/init.d/00_frandom
+
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
