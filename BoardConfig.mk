@@ -152,51 +152,7 @@ TW_SCREEN_BLANK_ON_BOOT := true
 # Support Native Layer RF cutback
 BOARD_USES_CUTBACK_IN_RILD := true
 
-BOARD_SEPOLICY_DIRS += \
-       device/motorola/shamu/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-        adspd.te \
-        atfwd.te \
-        bluetooth.te \
-        bluetooth_loader.te \
-        bootanim.te \
-        bridge.te \
-        camera.te \
-        device.te \
-        domain.te \
-        file.te \
-        gsiffd.te \
-        ims.te \
-        irsc_util.te \
-        mdm_helper.te \
-        mediaserver.te \
-        mpdecision.te \
-        netd.te \
-        netmgrd.te \
-        platform_app.te \
-        property.te \
-        property_contexts \
-        qmux.te \
-        radio.te \
-        rild.te \
-        sensors.te \
-        service.te \
-        ss_ramdump.te \
-        surfaceflinger.te \
-        system_app.te \
-        system_server.te \
-        tcmd.te \
-        tee.te \
-        te_macros \
-        thermald.te \
-        time.te \
-        ueventd.te \
-        untrusted_app.te \
-        zygote.te \
-        file_contexts \
-        genfs_contexts \
-        service_contexts
+BOARD_SEPOLICY_DIRS += device/motorola/shamu/sepolicy
 
 HAVE_ADRENO_SOURCE:= false
 
