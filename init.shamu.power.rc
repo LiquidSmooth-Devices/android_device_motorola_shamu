@@ -24,7 +24,6 @@ on boot
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
     chmod 0664 /dev/cpuctl/apps/cpu.notify_on_migrate
     write /sys/module/msm_thermal/core_control/enabled 0
-    write /sys/module/blu_plug/min_online 4
 
 on property:dev.bootcomplete=1
     stop mpdecision
@@ -56,6 +55,11 @@ on property:dev.bootcomplete=1
     write /sys/devices/system/cpu/cpufreq/conservative/freq_step 10
     write /sys/devices/system/cpu/cpufreq/conservative/down_threshold 40
     write /sys/devices/system/cpu/cpufreq/conservative/input_boost_freq 1728000
+	write /sys/class/misc/mako_hotplug_control/load_threshold 0
+	write /sys/class/misc/mako_hotplug_control/high_load_counter 5
     write /sys/devices/system/cpu/sched_balance_policy/current_sched_balance_policy performance
     write /dev/cpuctl/apps/cpu.notify_on_migrate 0
-    write /sys/module/blu_plug/min_online 1
+	# Disable zen_decision by default to avoid conflicts with mako_hotplug.
+	# Users can switch between the two now that we have an enable/disable 
+	# sysfs node for mako_hotplug.
+    write /sys/kernel/zen_decision/enabled 0
