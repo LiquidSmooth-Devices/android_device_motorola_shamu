@@ -19,7 +19,6 @@
 #
 # Everything in this directory will become public
 
-
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/init.shamu.rc:root/init.shamu.rc \
     device/motorola/shamu/init.shamu.power.rc:root/init.shamu.power.rc \
@@ -35,7 +34,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/audio_policy.conf:system/etc/audio_policy.conf \
-    device/motorola/shamu/audio_effects.conf:system/vendor/etc/audio_effects.conf
+    device/motorola/shamu/audio_effects.conf:system/etc/audio_effects.conf
 
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/media_profiles.xml:system/etc/media_profiles.xml \
@@ -90,6 +89,10 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4356
 # WiFi cal NVRAM file
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/bcmdhd.cal:system/etc/wifi/bcmdhd.cal
+
+# For SPN display
+PRODUCT_COPY_FILES += \
+    device/motorola/shamu/spn-conf.xml:system/etc/spn-conf.xml
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
@@ -154,14 +157,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=false \
-    ro.audio.monitorRotation=true \
-    lpa.decode=false \
-    lpa.releaselock=false \
-    lpa.use-stagefright=false \
-    tunnel.decode=false
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.isUsbOtgEnabled=1
+    ro.audio.monitorRotation=true
 
 # Audio effects
 PRODUCT_PACKAGES += \
@@ -228,18 +224,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.no_wait_for_card=1 \
     persist.radio.sib16_support=1
 
-# never dexopt the MotoSignature
-$(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
-
 # Include IMSEnabler
 PRODUCT_PACKAGES += \
     IMSEnabler
-
-# WiFi calling
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.data.iwlan.enable=true \
-    persist.radio.ignore_ims_wlan=1 \
-    persist.radio.data_con_rprt=1
 
 # Rich Communications Service is disabled in 5.1
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -267,14 +254,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.get_imsi_from_sim=true \
     telephony.lteOnCdmaDevice=1
 
-# SIM based FSG loading & MCFG activation
+# Allow carrier tethering
+PRODUCT_PROPERTY_OVERRIDES += \
+net.tethering.noprovisioning=true
+
+# SIM based FSG loading default enabled
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.fsg_reload_on=1 \
     persist.radio.mcfg_enabled=1
-
-# Allow tethering without provisioning app
-PRODUCT_PROPERTY_OVERRIDES += \
-    net.tethering.noprovisioning=true
 
 # Camera configuration
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -307,7 +294,6 @@ PRODUCT_PACKAGES += \
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
     nfc_nci.bcm2079x.default \
     NfcNci \
     Tag
@@ -318,12 +304,12 @@ PRODUCT_COPY_FILES += \
     device/motorola/shamu/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
     device/motorola/shamu/nfc/libnfc-brcm-20795a10.conf:system/etc/libnfc-brcm-20795a10.conf
 
-# NFCEE access control
-PRODUCT_COPY_FILES += \
-    device/motorola/shamu/nfcee_access.xml:system/etc/nfcee_access.xml
-
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
+
+# Enable USB OTG
+ADDITIONAL_BUILD_PROPERTIES += \
+    persist.sys.isUsbOtgEnabled=true
 
 # Modem debugger
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
@@ -344,25 +330,11 @@ endif
 # Enable for volte call
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 
-PRODUCT_PROPERTY_OVERRIDES += \
-   ro.hwui.texture_cache_size=72 \
-   ro.hwui.layer_cache_size=48 \
-   ro.hwui.r_buffer_cache_size=8 \
-   ro.hwui.path_cache_size=32 \
-   ro.hwui.gradient_cache_size=1 \
-   ro.hwui.drop_shadow_cache_size=6 \
-   ro.hwui.texture_cache_flushrate=0.4 \
-   ro.hwui.text_small_cache_width=1024 \
-   ro.hwui.text_small_cache_height=1024 \
-   ro.hwui.text_large_cache_width=2048 \
-   ro.hwui.text_large_cache_height=1024
-
-
-PRODUCT_PROPERTY_OVERRIDES += \
-   dalvik.vm.heapgrowthlimit=256m
+# configure the HWUI memory limits
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
 
 # setup dalvik vm configs.
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, hardware/qcom/msm8x84/msm8x84.mk)
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8x84/msm8x84-gpu-vendor.mk)

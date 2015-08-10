@@ -1,4 +1,4 @@
- #
+#
 # Copyright 2014 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,6 @@
 import init.shamu.usb.rc
 import init.shamu.power.rc
 import init.shamu.diag.rc
-import init.performance_profiles.rc
 
 on early-init
     mkdir /firmware 0771 system system
@@ -27,11 +26,11 @@ on early-init
 
 on init
     # See storage config details at http://source.android.com/tech/storage/
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-    mkdir /storage/usbdisk 0700 root root
-
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
+
+    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
+    mkdir /storage/usbdisk 0700 root root
 
     mkdir /oem 0550 root root
 
@@ -47,6 +46,8 @@ on init
     symlink /storage/emulated/legacy /mnt/sdcard
     symlink /storage/emulated/legacy /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+    symlink /storage/usbdisk /usbdisk
+    symlink /storage/usbdisk /mnt/usbdisk
 
 on fs
     mount_all fstab.shamu
@@ -103,6 +104,9 @@ on post-fs-data
 
     # rild files
     mkdir /data/misc/audio_cutback 0770 radio audio
+
+    # yank555.lu kernel config permissions
+    chmod 0700 /system/etc/init.yank555.lu.kernel.sh
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -248,28 +252,15 @@ on boot
     chown media media /sys/devices/c55_ctrl/gpio_core/value
     chown media media /sys/devices/c55_ctrl/gpio_reset/value
 
+    chmod 0644 /proc/cmdline
+
     # LED permissions
+    chown system system /sys/class/leds/charging/brightness
+    chown system system /sys/class/leds/charging/max_brightness
+    chmod 664 /sys/class/leds/charging/brightness
     chmod 664 /sys/class/leds/red/brightness
     chmod 664 /sys/class/leds/green/brightness
     chmod 664 /sys/class/leds/blue/brightness
-
-    # Vibrator permissions
-    chown system system /sys/vibrator/pwmvalue
-    chmod 0644 /sys/vibrator/pwmvalue
-
-    # Display color calibration
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_enable
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_cont
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_hue
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_invert
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_min
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_sat
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_val
-
-    # Sunlight Enhancement mode
-    chown system system /sys/devices/virtual/graphics/fb0/hbm
-    chmod 0660 /sys/devices/virtual/graphics/fb0/hbm
 
 # subsystem ramdump collection
 on property:persist.sys.qc.sub.rdump.on=*
@@ -408,22 +399,6 @@ service netmgrd /system/bin/netmgrd
     class main
     group radio
 
-service imsqmidaemon /system/bin/imsqmidaemon
-    class main
-    user system
-    socket ims_qmid stream 0660 system radio
-    group radio log
-
-service imsdatadaemon /system/bin/imsdatadaemon
-    class main
-    user root
-    socket ims_datad stream 0660 system radio
-    group system wifi radio inet log
-    disabled
-
-on property:sys.ims.QMI_DAEMON_STATUS=1
-    start imsdatadaemon
-
 service sensors /system/bin/sensors.qcom
     class core
     user root
@@ -527,15 +502,10 @@ service iprenew_eth0 /system/bin/dhcpcd -n
     oneshot
 
 service adspd /system/bin/adspd /dev/ttyHS3
-   class main
+   class late_start
    socket adspdsock stream 0660 media media
    user media
    group media input
-
-#external storage
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023  /mnt/media_rw/usbdisk /storage/usbdisk
-    class late_start
-    disabled
 
 on property:sys.boot_completed=1
     start qcom-post-boot
@@ -550,6 +520,10 @@ on property:ro.data.large_tcp_window_size=true
 # virtual sdcard daemon running as media_rw (1023)
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
     class late_start
+
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk /storage/usbdisk
+    class late_start
+    disabled
 
 on charger
     write /sys/class/leds/lcd-backlight/brightness 100
@@ -654,6 +628,9 @@ service atfwd /system/bin/ATFWD-daemon
     user system
     group system radio
 
-service cnd /system/bin/cnd
-    class late_start
-    socket cnd stream 660 root inet
+# Start yank555.lu kernel configuration
+service yank555-kernel /system/bin/sh /system/etc/init.yank555.lu.kernel.sh
+     class late_start
+     user root
+     group root
+     oneshot
