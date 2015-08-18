@@ -47,7 +47,8 @@ on init
     symlink /storage/emulated/legacy /mnt/sdcard
     symlink /storage/emulated/legacy /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-
+    symlink /storage/usbdisk /usbdisk
+    symlink /storage/usbdisk /mnt/usbdisk
 on fs
     mount_all fstab.shamu
     setprop ro.crypto.fuse_sdcard true
@@ -249,6 +250,9 @@ on boot
     chown media media /sys/devices/c55_ctrl/gpio_reset/value
 
     # LED permissions
+    chown system system /sys/class/leds/charging/brightness
+    chown system system /sys/class/leds/charging/max_brightness
+    chmod 664 /sys/class/leds/charging/brightness
     chmod 664 /sys/class/leds/red/brightness
     chmod 664 /sys/class/leds/green/brightness
     chmod 664 /sys/class/leds/blue/brightness
@@ -653,7 +657,3 @@ service atfwd /system/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
-
-service cnd /system/bin/cnd
-    class late_start
-    socket cnd stream 660 root inet

@@ -225,12 +225,6 @@ etc/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_6_0.fw
 etc/firmware/cpp_firmware_v1_8_0.fw
 
-# CNE
-bin/cnd
--priv-app/CNEService/CNEService.apk
-vendor/lib/libcne.so
-vendor/lib/libcneapiclient.so
-
 # Contacts adapter
 -priv-app/BuaContactAdapter/BuaContactAdapter.apk
 

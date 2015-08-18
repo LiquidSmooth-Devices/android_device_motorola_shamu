@@ -46,7 +46,7 @@ BOARD_RAMDISK_OFFSET     := 0x02000000
 
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.selinux=permissive androidboot.console=ttyHSL0 androidboot.hardware=shamu msm_rtb.filter=0x37 ehci-hcd.park=3 utags.blkdev=/dev/block/platform/msm_sdcc.1/by-name/utags utags.backup=/dev/block/platform/msm_sdcc.1/by-name/utagsBackup coherent_pool=8M
 
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset BOARD_RAMDISK_OFFSET --tags_offset BOARD_KERNEL_TAGS_OFFSET
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.
@@ -139,16 +139,6 @@ endif
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/motorola/shamu
 
-# TWRP
-TARGET_RECOVERY_DEVICE_DIRS := device/motorola/shamu
-DEVICE_RESOLUTION := 1440x2560
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_L_CRYPTO := true
-BOARD_HAS_NO_REAL_SDCARD := true
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
-TW_SCREEN_BLANK_ON_BOOT := true
-
 # Support Native Layer RF cutback
 BOARD_USES_CUTBACK_IN_RILD := true
 
@@ -163,7 +153,6 @@ BOARD_SEPOLICY_UNION += \
         bootanim.te \
         bridge.te \
         camera.te \
-        cnd.te \
         device.te \
         domain.te \
         file.te \
@@ -211,6 +200,9 @@ BOARD_HAS_AUDIO_DSP := true
 USE_DEVICE_SPECIFIC_CAMERA:= true
 
 BOARD_HAL_STATIC_LIBRARIES := libdumpstate.shamu
+
+# Time
+BOARD_USES_QC_TIME_SERVICES := true
 
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
