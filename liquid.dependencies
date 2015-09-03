@@ -7,7 +7,7 @@
   },
   {
     "remote": "lsd",
-    "repository": "LiquidKernel-Shamu",
+    "repository": "android_kernel_moto_shamu",
     "target_path": "kernel/moto/shamu",
     "revision": "lp5.1"
   }
