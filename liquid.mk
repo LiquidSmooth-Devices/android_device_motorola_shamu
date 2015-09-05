@@ -8,6 +8,9 @@ $(call inherit-product, vendor/liquid/config/common_phone.mk)
 # ViperFX
 $(call inherit-product-if-exists, packages/apps/Viper4Android/viperfx.mk)
 
+# UKM
+$(call inherit-product-if-exists, vendor/liquid/config/common_ukm.mk)
+
 # Enhanced NFC
 $(call inherit-product, vendor/liquid/config/nfc_enhanced.mk)
 
