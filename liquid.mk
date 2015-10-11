@@ -2,17 +2,23 @@
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1440
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit some common Liquid stuff.
+$(call inherit-product, vendor/liquid/config/common_phone.mk)
+
+# ViperFX
+$(call inherit-product-if-exists, packages/apps/Viper4Android/viperfx.mk)
+
+# UKM
+$(call inherit-product-if-exists, vendor/liquid/config/common_ukm.mk)
 
 # Enhanced NFC
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+$(call inherit-product, vendor/liquid/config/nfc_enhanced.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/moto/shamu/aosp_shamu.mk)
+$(call inherit-product, device/motorola/shamu/aosp_shamu.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := cm_shamu
+PRODUCT_NAME := liquid_shamu
 PRODUCT_BRAND := google
 PRODUCT_MODEL := Nexus 6
 
