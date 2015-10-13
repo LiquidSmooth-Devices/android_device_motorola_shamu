@@ -9,6 +9,6 @@
     "remote": "lsd",
     "repository": "android_kernel_moto_shamu",
     "target_path": "kernel/moto/shamu",
-    "revision": "lp5.1"
+    "revision": "mm6.0"
   }
 ]
